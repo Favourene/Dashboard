@@ -1,0 +1,443 @@
+@import url("https://fonts.googleapis.com/css?family=Inter:400,700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+html {
+  --BG: hsl(0, 0%, 100%);
+  --TopBGPattern: hsl(225, 100%, 98%);
+  --CardBG: hsl(227, 47%, 96%);
+  --TextLight: hsl(228, 12%, 44%);
+  --TextDark: hsl(230, 17%, 14%);
+  --LimeGreen: hsl(163, 72%, 41%);
+  --BrightRed: hsl(356, 69%, 56%);
+  --Facebook: hsl(195, 100%, 50%);
+  --Twitter: hsl(203, 89%, 53%);
+  --Instagram: linear-gradient(
+    90deg,
+    hsl(37, 97%, 70%) 0%,
+    hsl(329, 70%, 58%) 100%
+  );
+  --YouTube: hsl(348, 97%, 39%);
+  --Toggle: hsl(230, 22%, 74%);
+  --ToggleButton: hsl(225, 100%, 98%);
+}
+
+html[data-theme="dark"] {
+  --BG: hsl(230, 17%, 14%);
+  --TopBGPattern: hsl(232, 19%, 15%);
+  --CardBG: hsl(228, 28%, 20%);
+  --TextLight: hsl(228, 34%, 66%);
+  --TextDark: white;
+  --Toggle: linear-gradient(
+    90deg,
+    hsl(210, 78%, 56%) 0%,
+    hsl(146, 68%, 55%) 100%
+  );
+  --ToggleButton: hsl(232, 19%, 15%);
+}
+
+html.color-theme-in-transition,
+html.color-theme-in-transition *,
+html.color-theme-in-transition *:before,
+html.color-theme-in-transition *:after {
+  -webkit-transition: all 750ms !important;
+  transition: all 750ms !important;
+  -webkit-transition-delay: 0 !important;
+          transition-delay: 0 !important;
+}
+
+.container {
+  background-color: var(--BG);
+}
+
+.container .green {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--LimeGreen);
+}
+
+.container .red {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--BrightRed);
+}
+
+.container .topsection {
+  padding: 40px 40px 100px 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: var(--TopBGPattern);
+  border-radius: 0 0 40px 40px;
+}
+
+@media only screen and (min-width: 768px) {
+  .container .topsection {
+    padding: 40px 120px 120px 120px;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+.container .topsection .title {
+  padding-bottom: 20px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--TextLight);
+}
+
+.container .topsection .title h1 {
+  color: var(--TextDark);
+  font-size: 24px;
+}
+
+.container .topsection .title span {
+  color: var(--TextLight);
+  font-weight: 700;
+  font-size: 15px;
+}
+
+@media only screen and (min-width: 768px) {
+  .container .topsection .title {
+    border: none;
+  }
+}
+
+.container .topsection .dark {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  /* Rounded sliders */
+}
+
+.container .topsection .dark .dark-label {
+  color: var(--TextLight);
+  font-weight: 700;
+}
+
+.container .topsection .dark .switch {
+  position: relative;
+  display: inline-block;
+  margin-left: auto;
+  width: 60px;
+  height: 34px;
+}
+
+.container .topsection .dark .switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.container .topsection .dark .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: var(--Toggle);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.container .topsection .dark .slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: var(--ToggleButton);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.container .topsection .dark input:checked + .slider {
+  background-image: none;
+  background-color: var(--Toggle);
+}
+
+.container .topsection .dark input:focus + .slider {
+  -webkit-box-shadow: 0 0 1px #2196f3;
+          box-shadow: 0 0 1px #2196f3;
+}
+
+.container .topsection .dark input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  transform: translateX(26px);
+  background-color: var(--ToggleButton);
+}
+
+.container .topsection .dark .slider.round {
+  border-radius: 34px;
+}
+
+.container .topsection .dark .slider.round:before {
+  border-radius: 50%;
+}
+
+@media only screen and (min-width: 768px) {
+  .container .topsection .dark {
+    margin-left: auto;
+  }
+  .container .topsection .dark .dark-label {
+    margin-right: 20px;
+  }
+}
+
+.container .middlesection {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 30px 40px;
+  margin-top: -80px;
+}
+
+@media only screen and (min-width: 768px) {
+  .container .middlesection {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    padding: 30px 120px;
+    margin-top: -120px;
+  }
+}
+
+.container .middlesection .card-top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: var(--CardBG);
+  padding: 20px 0px;
+  text-align: center;
+  border-radius: 0 0 4px 4px;
+}
+
+@media only screen and (min-width: 768px) {
+  .container .middlesection .card-top {
+    padding: 20px 40px;
+    min-width: 220px;
+    height: 100%;
+  }
+}
+
+.container .middlesection .card-top .tag {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 20px;
+}
+
+.container .middlesection .card-top .tag span {
+  color: var(--TextLight);
+  margin-left: 10px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.container .middlesection .card-top h2 {
+  font-size: 60px;
+  color: var(--TextDark);
+}
+
+.container .middlesection .card-top .follower-text {
+  text-transform: uppercase;
+  font-size: 14px;
+  color: var(--TextLight);
+  letter-spacing: 5px;
+  margin-bottom: 20px;
+}
+
+.container .middlesection .facebook {
+  border-radius: 4px;
+  padding-top: 4px;
+  background-color: var(--Facebook);
+  margin-bottom: 20px;
+}
+
+.container .middlesection .twitter {
+  border-radius: 4px;
+  padding-top: 4px;
+  background-color: var(--Twitter);
+  margin-bottom: 20px;
+}
+
+.container .middlesection .youtube {
+  border-radius: 4px;
+  padding-top: 4px;
+  background-color: var(--YouTube);
+  margin-bottom: 20px;
+}
+
+.container .middlesection .instagram {
+  border-radius: 4px;
+  padding-top: 4px;
+  background-image: var(--Instagram);
+  border-image-slice: 1;
+  margin-bottom: 20px;
+}
+
+.container .bottomsection {
+  padding: 0px 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+@media only screen and (min-width: 768px) {
+  .container .bottomsection {
+    padding: 0px 120px;
+    padding-bottom: 20px;
+  }
+}
+
+.container .bottomsection h2 {
+  color: var(--TextDark);
+  margin-bottom: 20px;
+}
+
+.container .bottomsection .toprow,
+.container .bottomsection .bottomrow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+@media only screen and (min-width: 768px) {
+  .container .bottomsection .toprow,
+  .container .bottomsection .bottomrow {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+  }
+}
+
+.container .bottomsection .toprow .card-bottom,
+.container .bottomsection .bottomrow .card-bottom {
+  padding: 20px 40px 20px 30px;
+  background-color: var(--CardBG);
+  margin-bottom: 20px;
+  border-radius: 4px;
+  min-width: 220px;
+}
+
+.container .bottomsection .toprow .card-bottom .up,
+.container .bottomsection .toprow .card-bottom .down,
+.container .bottomsection .bottomrow .card-bottom .up,
+.container .bottomsection .bottomrow .card-bottom .down {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .bottomsection .toprow .card-bottom .up,
+.container .bottomsection .bottomrow .card-bottom .up {
+  margin-bottom: 40px;
+}
+
+.container .bottomsection .toprow .card-bottom .up h3,
+.container .bottomsection .bottomrow .card-bottom .up h3 {
+  color: var(--TextLight);
+  font-size: 14px;
+}
+
+.container .bottomsection .toprow .card-bottom .up img,
+.container .bottomsection .bottomrow .card-bottom .up img {
+  margin-left: auto;
+}
+
+.container .bottomsection .toprow .card-bottom .down p,
+.container .bottomsection .bottomrow .card-bottom .down p {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--TextDark);
+}
+
+.container .bottomsection .toprow .card-bottom .down span,
+.container .bottomsection .bottomrow .card-bottom .down span {
+  margin-left: auto;
+  font-size: 12px;
+}
+
+.attribution {
+  background-color: black;
+  color: white;
+  padding: 10px 30px;
+  text-align: center;
+  font-size: 10px;
+}
+
+.attribution a {
+  color: white;
+}
+
+@media only screen and (min-width: 768px) {
+  .attribution {
+    font-size: 14px;
+  }
+}
